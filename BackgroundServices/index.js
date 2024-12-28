@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cron = require("node-cron");   // for scheduling any task 
-const expenseEmail = require("./EmailService/Expense");
+const checkTotalAndSendMail = require("./EmailService/Expense");
 //miyc bvla xfwu sndf
 const app = express();
 //config env
@@ -18,11 +18,11 @@ mongoose.connect(process.env.DB_CONNECTION).then(()=>{
 //schedule a task 
 const run =() =>{
     cron.schedule("* * * * *", () => {
-        //console.log("Task is running every Minutes")
-        expenseEmail();   //check expense every time and send mail if it exceeds 10000
+        console.log("Task is running every Minutes")
+        checkTotalAndSendMail();   //check expense every time and send mail if it exceeds 10000
     })
 }
-//run()
+run()
 app.listen(process.env.PORT,()=>{
     console.log(`BackGround services is running on  Port ${process.env.PORT}`);
 })
