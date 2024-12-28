@@ -8,6 +8,7 @@ const ExpenseSchema = mongoose.Schema({
   label: { type: String, require: true }, //name of the expense
   value: { type: Number, require: true },
   date: { type: String, require: true },
+  notificationSent:{type:Boolean, default:false},
   
 });
 

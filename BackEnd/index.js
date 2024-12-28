@@ -9,14 +9,13 @@ const expenseRoute = require("./routes/expense"); //import all routesS
 dotenv.config();
 // Creating an instance of an Express application
 const app= express();
+//MiddleWare
+app.use(cors());//This middleware enables Cross-Origin Resource Sharing (CORS), allowing your server to handle requests from different origins (domains, ports, or protocols).
+
 
 app.use(express.json()); // to parse json inputs from client
 //use the routes
 app.use('/expenses',expenseRoute);
-
-
-//MiddleWare
-app.use(cors());//This middleware enables Cross-Origin Resource Sharing (CORS), allowing your server to handle requests from different origins (domains, ports, or protocols).
 
 
 //DB Connection
