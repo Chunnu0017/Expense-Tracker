@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 //get all expenses
 router.get("/", async (req, res) => {
   try {
-    const expenses = await Expense.find().sort({ createdAt: -1 });
+    const expenses = await Expense.find().sort({ createdAt: 1 }); //last created data will appear first
     res.status(200).json(expenses);
   } catch (error) {
     res.status(500).json(error);
