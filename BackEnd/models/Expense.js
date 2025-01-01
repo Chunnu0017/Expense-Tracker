@@ -10,6 +10,6 @@ const ExpenseSchema = mongoose.Schema({
   date: { type: String, require: true },
   notificationSent:{type:Boolean, default:false},
   
-});
+}, { timestamps: true }); // Automatically adds createdAt and updatedAt
 
 module.exports = mongoose.model("Expense", ExpenseSchema);
