@@ -16,12 +16,13 @@ router.post("/", async (req, res) => {
 //get all expenses
 router.get("/", async (req, res) => {
   try {
-    const expenses = await Expense.find().sort({ createdAt: 1 }); //last created data will appear first
+    const expenses = await Expense.find().sort({ updatedAt: -1 });
     res.status(200).json(expenses);
   } catch (error) {
     res.status(500).json(error);
   }
 });
+
 
 // update an Expense
 router.put("/:id", async (req, res) => {
